@@ -10,6 +10,9 @@
 // Access token for your app
 // (copy token from DevX getting started page
 // and save it as environment variable into the .env file)
+
+const dotenv = require("dotenv");
+dotenv.config();
 const token = process.env.WHATSAPP_TOKEN;
 
 // Imports dependencies and set up http server
@@ -19,8 +22,10 @@ const request = require("request"),
   axios = require("axios").default,
   app = express().use(body_parser.json()); // creates express http server
 
+const sendWelcomeMessage  = "./send_response.js"
+
 // Sets server port and logs message on success
-app.listen(process.env.PORT || 1337, () => console.log("webhook is listening"));
+app.listen(process.env.PORT || 5000, () => console.log("webhook is listening"));
 
 // Accepts POST requests at /webhook endpoint
 app.post("/webhook", (req, res) => {
